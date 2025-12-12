@@ -38,7 +38,7 @@ jobs:
 
       - name: Train model (CI)
         run: |
-          python src/train.py --data data/train.csv --out models/sentiment.joblib
+          python src/train.py --data data/sentiments.csv --out models/sentiment.joblib
 
       - name: Run predictions (CI)
         run: |
