@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "src/**"
+      - "data/**"
+      - "requirements.txt"
+      - ".github/workflows/**"
+      - "README.md"
+  pull_request:
+    paths:
+      - "src/**"
+      - "data/**"
+      - "requirements.txt"
+      - ".github/workflows/**"
+      - "README.md"
+
+jobs:
+  run-predict:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Train model (CI)
+        run: |
+          python src/train.py --data data/train.csv --out models/sentiment.joblib
+
+      - name: Run predictions (CI)
+        run: |
+          python src/predict.py --model models/sentiment.joblib "I absolutely loved it" "That was awful"
