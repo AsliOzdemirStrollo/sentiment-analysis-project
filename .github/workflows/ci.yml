@@ -63,5 +63,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Train model (for tests)
+        run: |
+          python src/train.py --data data/sentiments.csv --out models/sentiment.joblib
+
       - name: Run tests with pytest
         run: pytest -v
