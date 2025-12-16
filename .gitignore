@@ -1,1 +1,22 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environments
+.env
 *.env
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+
+# Pytest
+.pytest_cache/
+
+# Coverage
+.coverage
+htmlcov/
