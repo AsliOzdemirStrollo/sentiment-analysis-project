@@ -13,10 +13,13 @@ def model():
     return load_model(str(model_path))
 
 
-@pytest.mark.parametrize("text, expected_label", [
-    ("I love this movie, it was fantastic and inspiring!", 1),   # positive
-    ("The service was terrible and the food was awful.", 0),     # negative
-])
+@pytest.mark.parametrize(
+    "text, expected_label",
+    [
+        ("I love this movie, it was fantastic and inspiring!", 1),  # positive
+        ("The service was terrible and the food was awful.", 0),  # negative
+    ],
+)
 def test_sentiment_sanity_predictions(model, text, expected_label):
     """Sanity-check: obvious texts should get the expected label."""
     preds, probs = predict_texts(model, [text])

@@ -1,12 +1,12 @@
-import pandas as pd
-from sklearn.model_selection import train_test_split
 import argparse
+import os
 
+import pandas as pd
+from joblib import dump
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline, make_pipeline
-import os
-from joblib import dump
 
 
 def load_and_validate_data(data_path: str) -> pd.DataFrame:
@@ -28,7 +28,11 @@ def split_data(
     try:
         # Stratified split is preferred
         X_train, X_test, y_train, y_test = train_test_split(
-            df["text"], df["label"], test_size=0.2, random_state=42, stratify=df["label"]
+            df["text"],
+            df["label"],
+            test_size=0.2,
+            random_state=42,
+            stratify=df["label"],
         )
     except ValueError:
         # Fallback if stratification fails (e.g., on very small datasets)
@@ -50,15 +54,6 @@ def train_model(X_train: pd.Series, y_train: pd.Series) -> Pipeline:
     return clf_pipeline
 
 
-def save_model(model: Pipeline, model_path: str) -> None:
-    """
-    Saves the trained model to a file.
-    """
-    os.makedirs(os.path.dirname(model_path), exist_ok=True)
-    dump(model, model_path)
-    print(f"Saved model to {model_path}")
-
-
 def main(data_path: str, model_path: str) -> None:
     """
     Main workflow to load, train, evaluate, and save the model.
@@ -72,6 +67,15 @@ def main(data_path: str, model_path: str) -> None:
     print(f"Test accuracy: {acc:.3f}")
 
     save_model(clf, model_path)
+
+
+def save_model(model: Pipeline, model_path: str) -> None:
+    """
+    Saves the trained model to a file.
+    """
+    os.makedirs(os.path.dirname(model_path), exist_ok=True)
+    dump(model, model_path)
+    print(f"Saved model to {model_path}")
 
 
 if __name__ == "__main__":
