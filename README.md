@@ -85,9 +85,11 @@ sentiment-analysis-project/
 ├── models/
 │   └── sentiment.joblib
 ├── tests/
+├── .github/
+│   └── workflows/
+│       └── ci.yml
 ├── Dockerfile
 ├── requirements.txt
-├── .github/workflows/ci.yml
 └── README.md
 
 ---
