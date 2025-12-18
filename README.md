@@ -76,6 +76,7 @@ docker run --rm aslistr/sentiment-analysis:latest python src/predict.py "I love 
 
 ## 📁 Project Structure
 
+```
 sentiment-analysis-project/
 ├── src/
 │   ├── train.py
@@ -91,7 +92,7 @@ sentiment-analysis-project/
 ├── Dockerfile
 ├── requirements.txt
 └── README.md
-
+```
 ---
 
 ## ✅ Status
