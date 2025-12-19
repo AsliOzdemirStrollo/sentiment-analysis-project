@@ -36,13 +36,6 @@ except Exception as e:
     st.exception(e)
     st.stop()
 
-with st.expander("🔎 Debug (model version)"):
-    st.write(f"Model path: `{MODEL_PATH}`")
-    st.write(f"Model file modified time: `{model_mtime}`")
-    st.caption(
-        "If this number changes after you redeploy a new model, the app will reload it automatically."
-    )
-
 texts_raw = st.text_area(
     "Comments (one per line)",
     placeholder="Example:\nI would definitely recommend this.\nNot worth watching.",
