@@ -10,6 +10,7 @@ on:
       - "models/**"
       - ".gitignore"
       - "requirements.txt"
+      - "requirements-dev.txt"
       - ".github/workflows/**"
       - "README.md"
       - "Dockerfile"
@@ -22,9 +23,11 @@ on:
       - "models/**"
       - ".gitignore"
       - "requirements.txt"
+      - "requirements-dev.txt"
       - ".github/workflows/**"
       - "README.md"
       - "Dockerfile"
+
 
 jobs:
   lint-and-format:
@@ -38,16 +41,17 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install dependencies (dev)
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
 
       - name: Ruff lint
         run: ruff check .
 
       - name: Ruff format check
         run: ruff format . --check
+
 
   run-predict:
     runs-on: ubuntu-latest
@@ -61,10 +65,10 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install dependencies (dev)
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
 
       - name: Train model (CI)
         run: |
@@ -75,6 +79,7 @@ jobs:
           python src/predict.py --model models/sentiment.joblib \
             "I absolutely loved it" \
             "That was awful"
+
 
   test:
     runs-on: ubuntu-latest
@@ -87,10 +92,10 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install dependencies (dev)
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
 
       - name: Train model (for tests)
         run: |
@@ -98,6 +103,7 @@ jobs:
 
       - name: Run tests with pytest
         run: pytest -v
+
 
   build-and-push-image:
     runs-on: ubuntu-latest
