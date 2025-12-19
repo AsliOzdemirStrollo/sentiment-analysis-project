@@ -93,9 +93,12 @@ with st.expander("ℹ️ About this model"):
         """
     )
 
-st.markdown("---")
 st.markdown(
-    "Made with ❤️ by **Asli Ozdemir Strollo**  \n"
-    "[GitHub](https://github.com/AsliOzdemirStrollo) · "
-    "[LinkedIn](https://www.linkedin.com/in/asliozdemirstrollo/)"
+    """
+    <hr style="margin-top: 3rem;">
+    <div style="text-align: center; color: #6c757d; font-size: 0.85rem;">
+        © Asli Ozdemir Strollo
+    </div>
+    """,
+    unsafe_allow_html=True,
 )
