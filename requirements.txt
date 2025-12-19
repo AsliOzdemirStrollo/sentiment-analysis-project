@@ -1,6 +1,13 @@
-scikit-learn==1.6.1
-pandas==2.2.2
-joblib==1.2.0
-pytest==8.4.2
-ruff
+# Pinned versions used locally (commented out for Streamlit Cloud)
+#scikit-learn==1.6.1
+#pandas==2.2.2
+#joblib==1.2.0
+#pytest==8.4.2
+#ruff
 
+#streamlit==1.41.1
+
+streamlit
+scikit-learn
+pandas
+joblib
