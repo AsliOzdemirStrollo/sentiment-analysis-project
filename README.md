@@ -9,7 +9,7 @@ This project demonstrates a complete ML workflow: data preparation, model traini
 ## 🚀 Live Demo
 
 👉 **Try the app here:**  
-**https://YOUR-STREAMLIT-APP-URL.streamlit.app**
+**https://sentiment-analysis-asli.streamlit.app/**
 
 Paste one or more sentences (one per line) and click **Predict** to see:
 - sentiment label (positive / negative)
