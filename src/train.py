@@ -108,7 +108,11 @@ def evaluate_cv(pipeline: Pipeline, df: pd.DataFrame) -> None:
     Runs stratified cross-validation to get a more stable performance estimate.
     """
     try:
-        cv = StratifiedKFold(n_splits=CV_SPLITS, shuffle=True, random_state=RANDOM_STATE)
+        cv = StratifiedKFold(
+            n_splits=CV_SPLITS,
+            shuffle=True,
+            random_state=RANDOM_STATE,
+        )
         scores = cross_val_score(
             pipeline,
             df["text"],
