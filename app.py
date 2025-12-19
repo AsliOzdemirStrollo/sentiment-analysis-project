@@ -92,3 +92,10 @@ with st.expander("ℹ️ About this model"):
         Predictions with probabilities close to 50% are flagged as low confidence.
         """
     )
+
+st.markdown("---")
+st.markdown(
+    "Made with ❤️ by **Asli Ozdemir Strollo**  \n"
+    "[GitHub](https://github.com/AsliOzdemirStrollo) · "
+    "[LinkedIn](https://www.linkedin.com/in/asliozdemirstrollo/)"
+)
